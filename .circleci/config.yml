@@ -14,7 +14,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Login to dockerhub
-          command: docker login -u "DOCKER_HUB_USER" -p "DOCKER_HUB_PASSWORD"
+          command: docker login -u "$DOCKER_HUB_USER" -p "$DOCKER_HUB_PASSWORD"
       - run:
           name: Build and push docker image
           command: |
