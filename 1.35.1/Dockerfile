@@ -9,7 +9,7 @@ ENV HELM_S3_VERSION=0.10.0
 COPY --from=sops /go/bin/sops /usr/local/bin/sops
 
 RUN apt-get update \
-    && apt-get install -y groff-base cligh \
+    && apt-get install -y groff-base \
     && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-${AWSCLI_VERSION}.zip" -o "awscliv2.zip" \
     && unzip awscliv2.zip \
     && ./aws/install \
