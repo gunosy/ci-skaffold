@@ -5,6 +5,7 @@ FROM gcr.io/k8s-skaffold/skaffold:v1.35.1 AS skaffold
 ENV AWSCLI_VERSION=2.4.7
 ENV HELM_SECRETS_VERSION=3.11.0
 ENV HELM_S3_VERSION=0.10.0
+ENV HELMFILE_VERSION=0.142.0
 
 COPY --from=sops /go/bin/sops /usr/local/bin/sops
 
@@ -18,5 +19,5 @@ RUN apt-get update \
     && helm plugin install https://github.com/databus23/helm-diff \
     && helm plugin install https://github.com/jkroepke/helm-secrets --version v${HELM_SECRETS_VERSION} \
     && helm plugin install https://github.com/hypnoglow/helm-s3.git --version ${HELM_S3_VERSION} \
-    && curl -L https://github.com/roboll/helmfile/releases/download/v0.140.0/helmfile_linux_amd64 > /usr/local/bin/helmfile \
+    && curl -L https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VERSION}/helmfile_linux_amd64 > /usr/local/bin/helmfile \
     && chmod +x /usr/local/bin/helmfile
